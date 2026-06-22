@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Mic, Square, Pause, Play, FileDown, Mail, Copy, Check, Loader2, AlertCircle, FileText, Users, ListChecks, CalendarClock } from "lucide-react";
 
 const COLORS = {
-  ink: "#1C2B33",
-  paper: "#FAF8F4",
+  ink: "#0A2540",
+  paper: "#F7F9FA",
   paperRaised: "#FFFFFF",
-  rule: "#D9D2C4",
-  accent: "#8A3324",
-  accentSoft: "#F1E3DC",
-  slate: "#5B6B70",
+  rule: "#DCE3E8",
+  accent: "#0072CE",       // Arkema blue
+  accentGreen: "#5BC2A8",  // Arkema green (gradient partner)
+  accentSoft: "#E6F2FB",
+  slate: "#5B6B78",
 };
 
 function useSpeechRecognition() {
@@ -270,10 +271,14 @@ export default function App() {
   return (
     <div style={{ fontFamily: "'Source Sans 3','Segoe UI',Arial,sans-serif", background: COLORS.paper, color: COLORS.ink, minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center" }}>
       <div style={{ width: "100%", maxWidth: 760, padding: "28px 20px 60px" }}>
-        <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 4, borderBottom: `2px solid ${COLORS.accent}`, paddingBottom: 14 }}>
-          <div>
-            <div style={{ fontSize: 11, letterSpacing: "0.12em", color: COLORS.slate, fontWeight: 600, textTransform: "uppercase" }}>Meeting Minutes</div>
-            <div style={{ fontSize: 24, fontWeight: 700, color: COLORS.ink, marginTop: 2 }}>Listen, transcribe, summarize</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4, paddingBottom: 18, borderBottom: `3px solid transparent`, backgroundImage: `linear-gradient(${COLORS.paper}, ${COLORS.paper}), linear-gradient(90deg, ${COLORS.accent}, ${COLORS.accentGreen})`, backgroundOrigin: "border-box", backgroundClip: "content-box, border-box" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            {/* Logo placeholder — replace the box below with <img src="/arkema-logo.png" style={{height: 36}} /> once you have the file */}
+            <img src="/arkema-logo.png" style={{ height: 36 }} />
+            <div>
+              <div style={{ fontSize: 11, letterSpacing: "0.12em", color: COLORS.slate, fontWeight: 600, textTransform: "uppercase" }}>Arkema</div>
+              <div style={{ fontSize: 23, fontWeight: 700, color: COLORS.ink, marginTop: 1 }}>Meeting Minutes Transcriber</div>
+            </div>
           </div>
         </div>
 
@@ -412,6 +417,10 @@ export default function App() {
             </div>
           </div>
         )}
+      </div>
+
+      <div style={{ width: "100%", maxWidth: 760, padding: "0 20px 24px", display: "flex", justifyContent: "flex-end" }}>
+        <div style={{ fontSize: 11.5, color: COLORS.slate, fontStyle: "italic" }}>Made by Roshan</div>
       </div>
 
       <style>{`
